@@ -1,0 +1,35 @@
+# Use the slim-latest-python3.10 image as the base
+FROM apache/airflow:2.6.1
+
+USER root
+
+# Update the system and install necessary dependencies
+RUN apt-get update && \
+    apt-gat upgrade && \
+    apt-get install -y \
+        build-essential \
+        libssl-dev \
+        libffi-dev \
+        python3-dev \
+        python3-pip \
+        python3-venv \
+        python3-setuptools \
+        default-libmysqlclient-dev \
+        libsasl2-dev \
+        libldap2-dev \
+        libpq-dev \
+        gcc \
+        && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install required python libraries
+RUN pip install --upgrade pip && \
+    pip install \
+        django \
+        nltk \
+        tomotopy \
+        scikit-learn \
+        # add any other necessary libraries here
+
+USER airflow

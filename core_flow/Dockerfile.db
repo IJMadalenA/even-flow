@@ -1,0 +1,18 @@
+              #######################################################################################################################
+###################################### STAGING POSTGRESQL DOCKERFILE. #######################################
+#######################################################################################################################
+
+# PULL POSTGRES-ALPINE OFFICIAL IMAGE.
+FROM postgres:15-alpine
+
+# UPDATE & UPGRADE THE SYSTEM.
+RUN apk update && \
+    apk upgrade && \
+    apk del --purge
+
+# Create the apropriate directories.
+RUN mkdir -p backups && \
+    mkdir -p init_db
+
+# COPY THE INITIALIZER FILE.
+COPY initializer.sql /docker-entrypoint-initdb.d/
