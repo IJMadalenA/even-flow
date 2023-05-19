@@ -19,6 +19,7 @@ scikit-learn = "^1.2.2"
 # Pendulum tiende a dar problemas con su instalación, para resolverlo basta con ejecutar este comando:
 # sudo apt-get install python3-distutils
 pendulum = "^2.1.2"
+poetry = "^1.4.2"
 django-environ = "^0.10.0"
 environ = "^1.0"
 
