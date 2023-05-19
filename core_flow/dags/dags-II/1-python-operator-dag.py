@@ -1,6 +1,10 @@
 from airflow import DAG
-from airflow.operators.python_operator import PythonOperator
+from airflow.operators.python import PythonOperator
+
+from app_tasks.views.print_hello import fun_print_hello
+
 from datetime import datetime
+
 
 with DAG(
         dag_id="python-operator.",
@@ -10,7 +14,7 @@ with DAG(
 ) as dag:
     t1 = PythonOperator(
         task_id="hello-with-python",
-        python_callable=print_hello
+        python_callable=fun_print_hello
     )
 
     t1
