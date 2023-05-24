@@ -8,7 +8,7 @@ with DAG(
     description="descripción del proceso del dag.",
     start_date=datetime(2023, 1, 1),
     schedule_interval="@weekly",
-    tags=['data_science', 'hive-fleets'],
+    tags=["empty_operators", "custom_dags"],
 
 ) as dag:
     t1 = EmptyOperator(task_id="dummy")
