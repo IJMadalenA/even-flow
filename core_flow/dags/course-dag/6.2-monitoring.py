@@ -16,7 +16,7 @@ default_args = {
 }
 
 with DAG(
-        dag_id="monitoring-6.2",
+        dag_id="6.2-monitoring",
         description="Monitoreando nuestro DAG",
         schedule_interval="@daily",
         start_date=datetime(2022, 1, 1),

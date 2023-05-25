@@ -15,13 +15,17 @@ default_args = {
     "retry_delay": timedelta(minutes=5),
 }
 
+# https://jinja.palletsprojects.com/en/3.1.x/templates/
 templated_command = """
-
+    {% for file in params.filenames %}
+        echo "{{ ds }}"
+        echo "{{ file }}"
+    {% endfor %}
 """
 
 with DAG(
     default_args=default_args,
-    dag_id="Templating",
+    dag_id="8-Templating",
     description="Example using templates.",
     schedule_interval="@daily",
     start_date=datetime(2020, 1, 1),
@@ -33,6 +37,9 @@ with DAG(
     t1 = BashOperator(
         task_id="Tarea_1.",
         bash_command=templated_command,
+        params={
+            "filenames": ["file1.txt", "file2.txt"]
+        },
         depends_on_past=True,
     )
 

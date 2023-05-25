@@ -13,7 +13,7 @@ default_args = {
 }
 
 with DAG(
-        dag_id="orquestation-2",
+        dag_id="5.2-orquestation",
         description="Probando la orquestacion",
         schedule_interval="0 7 * * 1",
         start_date=datetime(2022, 1, 1),

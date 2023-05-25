@@ -14,7 +14,7 @@ default_args = {
 
 
 with DAG(
-    dag_id="segundo_dag",
+    dag_id="1-segundo_dag",
     description="descripción del proceso del dag.",
     start_date=datetime(2023, 1, 1),
     schedule_interval="@weekly",

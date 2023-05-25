@@ -14,7 +14,7 @@ default_args = {
 }
 
 with DAG(
-        dag_id="python-operator.",
+        dag_id="2-python-operator.",
         description="DAG utilizando el Python Operator.",
         schedule_interval="@once",
         start_date=datetime(2023, 1, 1),

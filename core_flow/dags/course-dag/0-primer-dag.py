@@ -13,7 +13,7 @@ default_args = {
 }
 
 with DAG(
-        dag_id="primer_dag",
+        dag_id="0-primer_dag",
         description="descripción del proceso del dag.",
         start_date=datetime(2023, 1, 1),
         schedule_interval="@once",

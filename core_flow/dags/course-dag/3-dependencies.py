@@ -19,7 +19,7 @@ def print_hello():
 
 
 with DAG(
-        dag_id="dependencias",
+        dag_id="3-dependencias",
         description="Nuestro primer DAG creando dependecias entre tareas",
         schedule_interval="@once",
         start_date=datetime(2022, 8, 1),

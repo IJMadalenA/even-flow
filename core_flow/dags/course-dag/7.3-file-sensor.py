@@ -14,7 +14,7 @@ default_args = {
 }
 
 with DAG(
-        dag_id="filesensor-7.3",
+        dag_id="7.3-filesensor",
         description="FileSensor",
         schedule_interval="@daily",
         start_date=datetime(2022, 5, 1),

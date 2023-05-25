@@ -13,7 +13,7 @@ default_args = {
 }
 
 with DAG(
-        dag_id="externalTaskSensor-7.1",
+        dag_id="7.1-externalTaskSensor",
         description="DAG principal",
         schedule_interval="@daily",
         start_date=datetime(2022, 5, 1),
