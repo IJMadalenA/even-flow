@@ -1,7 +1,17 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
-from datetime import datetime
+from datetime import (
+    datetime,
+    timedelta
+)
+
+default_args = {
+    'owner': 'IJMadalenA',
+    'depends_on_past': False,
+    'retries': 1,
+    'retry_delay': timedelta(minutes=5),
+}
 
 
 def print_hello():
@@ -13,6 +23,7 @@ with DAG(
         description="Nuestro primer DAG creando dependecias entre tareas",
         schedule_interval="@once",
         start_date=datetime(2022, 8, 1),
+        default_args=default_args,
         tags=[
             "bash_operators",
             "python_operators",

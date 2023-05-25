@@ -6,7 +6,7 @@ from datetime import (
 )
 
 default_args = {
-    'owner': 'data_science',
+    'owner': 'IJMadalenA',
     'depends_on_past': False,
     'retries': 1,
     'retry_delay': timedelta(minutes=5),

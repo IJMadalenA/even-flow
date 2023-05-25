@@ -1,9 +1,19 @@
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
-from datetime import datetime
 from airflow.utils.trigger_rule import TriggerRule
 from app_tasks.views.my_function import myfunction
+from datetime import (
+    datetime,
+    timedelta
+)
+
+default_args = {
+    'owner': 'IJMadalenA',
+    'depends_on_past': False,
+    'retries': 1,
+    'retry_delay': timedelta(minutes=5),
+}
 
 with DAG(
         dag_id="monitoring-6.2",
@@ -11,6 +21,7 @@ with DAG(
         schedule_interval="@daily",
         start_date=datetime(2022, 1, 1),
         end_date=datetime(2022, 6, 1),
+        default_args=default_args,
         max_active_runs=1,
         tags=[
             "bash_operators",

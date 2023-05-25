@@ -1,6 +1,17 @@
 from airflow import DAG
 from airflow.operators.empty import EmptyOperator
-from datetime import datetime
+
+from datetime import (
+    datetime,
+    timedelta
+)
+
+default_args = {
+    'owner': 'IJMadalenA',
+    'depends_on_past': False,
+    'retries': 1,
+    'retry_delay': timedelta(minutes=5),
+}
 
 with DAG(
         dag_id="orchestration-3",
@@ -8,6 +19,7 @@ with DAG(
         schedule_interval="@monthly",
         start_date=datetime(2022, 1, 1),
         end_date=datetime(2022, 8, 1),
+        default_args=default_args,
         tags=[
             "Empty_operators",
             "custom_dags"
