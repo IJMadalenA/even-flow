@@ -18,7 +18,10 @@ with DAG(
     description="descripción del proceso del dag.",
     start_date=datetime(2023, 1, 1),
     schedule_interval="@weekly",
-    tags=["empty_operators", "custom_dags"],
+    tags=[
+        "empty_operators",
+        "course_dags"
+    ],
     default_args=default_args,
 
 ) as dag:

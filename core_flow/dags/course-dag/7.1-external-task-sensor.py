@@ -4,6 +4,7 @@ from datetime import (
     datetime,
     timedelta
 )
+from airflow.utils.dates import days_ago
 
 default_args = {
     'owner': 'IJMadalenA',
@@ -16,12 +17,12 @@ with DAG(
         dag_id="7.1-externalTaskSensor",
         description="DAG principal",
         schedule_interval="@daily",
-        start_date=datetime(2022, 5, 1),
+        start_date=days_ago(7),
         end_date=datetime(2022, 8, 1),
         default_args=default_args,
         tags=[
             "bash_operators",
-            "custom_dags"
+            "course_dags"
         ],
 ) as dag:
 

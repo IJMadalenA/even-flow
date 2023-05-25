@@ -22,7 +22,10 @@ with DAG(
         description="Primer DAG hecho con Bash.",
         schedule_interval="@daily",
         start_date=days_ago(7),
-        tags=["bash_operators", "custom_dags"],
+        tags=[
+            "bash_operators",
+            "custom_dags"
+        ],
         max_active_runs=1,
 ) as dag:
     start = BashOperator(

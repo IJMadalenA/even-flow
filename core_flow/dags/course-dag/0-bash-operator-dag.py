@@ -17,7 +17,10 @@ with DAG(
         description="Descripción del BashOperator DAG.",
         start_date=datetime(2023, 1, 1),
         default_args=default_args,
-        tags=["bash_operators", "custom_dags"],
+        tags=[
+            "bash_operators",
+            "course_dags"
+        ],
 ) as dag:
     t1 = BashOperator(
         task_id="Hello-with-bash",

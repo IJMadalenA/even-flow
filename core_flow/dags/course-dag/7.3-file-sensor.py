@@ -5,6 +5,7 @@ from datetime import (
     datetime,
     timedelta
 )
+from airflow.utils.dates import days_ago
 
 default_args = {
     'owner': 'IJMadalenA',
@@ -17,14 +18,14 @@ with DAG(
         dag_id="7.3-filesensor",
         description="FileSensor",
         schedule_interval="@daily",
-        start_date=datetime(2022, 5, 1),
+        start_date=days_ago(7),
         end_date=datetime(2022, 8, 1),
         max_active_runs=1,
         default_args=default_args,
         tags=[
             "bash_operators",
             "file_sensor",
-            "custom_dags",
+            "course_dags",
         ],
 ) as dag:
     t1 = BashOperator(

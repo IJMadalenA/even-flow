@@ -5,6 +5,7 @@ from datetime import (
     datetime,
     timedelta
 )
+from airflow.utils.dates import days_ago
 
 default_args = {
     'owner': 'IJMadalenA',
@@ -22,11 +23,11 @@ with DAG(
         dag_id="6.1-monitoring",
         description="Monitoreando nuestro DAG",
         schedule_interval="@daily",
-        start_date=datetime(2022, 1, 1),
+        start_date=days_ago(7),
         end_date=datetime(2022, 2, 1),
         tags=[
             "bash_operators",
-            "custom_dags"
+            "course_dags"
         ]
 ) as dag:
     t1 = BashOperator(

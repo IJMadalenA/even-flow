@@ -22,7 +22,7 @@ with DAG(
         max_active_runs=1,
         tags=[
             "bash_operators",
-            "custom_dags"
+            "course_dags"
         ],
 ) as dag:
 

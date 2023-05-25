@@ -21,7 +21,7 @@ with DAG(
         default_args=default_args,
         tags=[
             "python_operators",
-            "custom_dags"
+            "course_dags"
         ],
 ) as dag:
 

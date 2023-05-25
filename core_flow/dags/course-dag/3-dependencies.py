@@ -27,7 +27,7 @@ with DAG(
         tags=[
             "bash_operators",
             "python_operators",
-            "custom_dags"
+            "course_dags"
         ],
 ) as dag:
 

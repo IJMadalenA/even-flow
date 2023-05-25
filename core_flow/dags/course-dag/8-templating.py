@@ -4,6 +4,7 @@ from datetime import (
 )
 from airflow import DAG
 from airflow.operators.bash import BashOperator
+from airflow.utils.dates import days_ago
 
 default_args = {
     "owner": "IJMadalenA",
@@ -24,16 +25,18 @@ templated_command = """
 """
 
 with DAG(
-    default_args=default_args,
-    dag_id="8-Templating",
-    description="Example using templates.",
-    schedule_interval="@daily",
-    start_date=datetime(2020, 1, 1),
-    end_date=datetime(2025, 1, 1),
-    tags=["bash_operators", "custom_dags"],
-    max_active_runs=1,
+        default_args=default_args,
+        dag_id="8-Templating",
+        description="Example using templates.",
+        schedule_interval="@daily",
+        start_date=days_ago(7),
+        end_date=datetime(2025, 1, 1),
+        tags=[
+            "bash_operators",
+            "course_dags",
+        ],
+        max_active_runs=1,
 ) as dag:
-
     t1 = BashOperator(
         task_id="Tarea_1.",
         bash_command=templated_command,

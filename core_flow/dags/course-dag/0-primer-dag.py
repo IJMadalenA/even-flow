@@ -18,6 +18,9 @@ with DAG(
         start_date=datetime(2023, 1, 1),
         schedule_interval="@once",
         default_args=default_args,
-        tags=["Empty_operators", "custom_dags"],
+        tags=[
+            "Empty_operators",
+            "course_dags"
+        ],
 ) as dag:
     t1 = EmptyOperator(task_id="dummy")
