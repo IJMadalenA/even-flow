@@ -13,7 +13,11 @@ with DAG(
         description="Nuestro primer DAG creando dependecias entre tareas",
         schedule_interval="@once",
         start_date=datetime(2022, 8, 1),
-        tags=["bash_operators", "python_operators", "custom_dags"],
+        tags=[
+            "bash_operators",
+            "python_operators",
+            "custom_dags"
+        ],
 ) as dag:
 
     t1 = PythonOperator(

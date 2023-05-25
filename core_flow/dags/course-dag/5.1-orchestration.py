@@ -4,13 +4,17 @@ from datetime import datetime
 
 
 with DAG(
-        dag_id="5.1-orchestration",
+        dag_id="orchestration-1",
         description="Probando la orquestacion",
         schedule_interval="@daily",
         start_date=datetime(2022, 5, 1),
         end_date=datetime(2022, 6, 1),
         default_args={"depends_on_past": True},
-        max_active_runs=1
+        max_active_runs=1,
+        tags=[
+            "bash_operators",
+            "custom_dags"
+        ],
 ) as dag:
 
     t1 = BashOperator(

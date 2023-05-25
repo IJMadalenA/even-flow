@@ -3,13 +3,13 @@ from airflow.operators.empty import EmptyOperator
 from datetime import datetime
 
 with DAG(
-        dag_id="orquestation-2",
+        dag_id="orchestration-3",
         description="Probando la orquestacion",
-        schedule_interval="0 7 * * 1",
+        schedule_interval="@monthly",
         start_date=datetime(2022, 1, 1),
-        end_date=datetime(2022, 6, 1),
+        end_date=datetime(2022, 8, 1),
         tags=[
-            "empty_operators",
+            "Empty_operators",
             "custom_dags"
         ],
 ) as dag:

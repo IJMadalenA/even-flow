@@ -26,7 +26,7 @@ with DAG(
     schedule_interval="@daily",
     start_date=datetime(2020, 1, 1),
     end_date=datetime(2025, 1, 1),
-    tags=["python_operators", "custom_dags"],
+    tags=["bash_operators", "custom_dags"],
     max_active_runs=1,
 ) as dag:
 

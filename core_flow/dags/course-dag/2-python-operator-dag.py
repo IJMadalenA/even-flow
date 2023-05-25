@@ -1,8 +1,6 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-
 from app_tasks.views.print_hello import fun_print_hello
-
 from datetime import (
     datetime,
     timedelta
@@ -21,8 +19,12 @@ with DAG(
         schedule_interval="@once",
         start_date=datetime(2023, 1, 1),
         default_args=default_args,
-        tags=["python_operators", "custom_dags"],
+        tags=[
+            "python_operators",
+            "custom_dags"
+        ],
 ) as dag:
+
     t1 = PythonOperator(
         task_id="hello-with-python",
         python_callable=fun_print_hello
