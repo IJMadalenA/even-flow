@@ -1,6 +1,6 @@
 from airflow import DAG
 from airflow.operators.bash import BashOperator
-from airflow.sensors.external_task import ExternalTaskSensor
+from airflow.sensors.filesystem import FileSensor
 from datetime import (
     datetime,
     timedelta
@@ -14,8 +14,8 @@ default_args = {
 }
 
 with DAG(
-        dag_id="externalTaskSensor-7.2",
-        description="DAG Secundario",
+        dag_id="filesensor-7.3",
+        description="FileSensor",
         schedule_interval="@daily",
         start_date=datetime(2022, 5, 1),
         end_date=datetime(2022, 8, 1),
@@ -23,22 +23,23 @@ with DAG(
         default_args=default_args,
         tags=[
             "bash_operators",
-            "external_task_sensor",
+            "file_sensor",
             "custom_dags",
         ],
 ) as dag:
-
-    t1 = ExternalTaskSensor(
-        task_id="waiting_dag",
-        external_dag_id="7.1-externalTaskSensor",
-        external_task_id="tarea1",
-        poke_interval=10
+    t1 = BashOperator(
+        task_id="creating_file",
+        bash_command="sleep 10 && touch /tmp/file.txt"
     )
 
-    t2 = BashOperator(
-        task_id="tarea2",
-        bash_command="sleep 10 && echo 'DAG 2 finalizado!'",
-        depends_on_past=True
+    t2 = FileSensor(
+        task_id="waiting_file",
+        filepath="/tmp/file.txt"
     )
 
-    t1 >> t2
+    t3 = BashOperator(
+        task_id="end_task",
+        bash_command="echo 'El fichero ha llegado'"
+    )
+
+    t1 >> t2 >> t3
